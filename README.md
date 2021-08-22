@@ -30,4 +30,5 @@ sdg.plot_outdegrees()
 sdg.save_to_hdf5('my_graph.hd5', 'graph1')
 
 ```
+![image](https://user-images.githubusercontent.com/17587387/130370379-ab395ddd-5dbd-4dd5-8c83-5a47f0a61e2e.png)
 
