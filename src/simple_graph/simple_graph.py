@@ -28,7 +28,7 @@ class SimpleDirectedGraph():
         vertices: list of vertices. Supports either integers or strings as vertex names
         edges: List of tuples of vertices indicating edges
         adjacency: In case edges is None, adjacency matrix can be
-            given as CSR index (numpy array) and index ptr tuple ((numpy array)).
+            given as CSR index (numpy array) and index ptr (numpy array) tuple.
 
     Raises:
         ValueError: In case of non unique vertices are given, or both
