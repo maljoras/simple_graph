@@ -25,14 +25,12 @@ class SimpleDirectedGraph():
         Expect all edges in and out nodes to be present in the list of vertices
 
     Args:
-
         vertices: list of vertices. Supports either integers or strings as vertex names
         edges: List of tuples of vertices indicating edges
         adjacency: In case edges is None, adjacency matrix can be
             given as CSR index (numpy array) and index ptr tuple ((numpy array)).
 
     Raises:
-
         ValueError: In case of non unique vertices are given, or both
             or none of edges and adjacency
     """
@@ -63,8 +61,8 @@ class SimpleDirectedGraph():
             vertices_to_rank = {v: i for i, v in enumerate(self.vertices)}
 
             num_edges = len(edges)
-            rank_in = np.zeros((num_edges), 'int64')
-            rank_out = np.zeros((num_edges), 'int64')
+            rank_in = np.zeros((num_edges), 'int')
+            rank_out = np.zeros((num_edges), 'int')
             for i, (in_vertex, out_vertex) in enumerate(edges): # type: ignore
                 rank_in[i] = vertices_to_rank[in_vertex] # type: ignore
                 rank_out[i] = vertices_to_rank[out_vertex] # type: ignore
@@ -76,12 +74,20 @@ class SimpleDirectedGraph():
         self.num_edges = self.adjacency.sum()
 
     def print_num_edges(self) -> int:
-        """ Print (and return) the number of edges"""
+        """ Print (and return) the number of edges
+
+        Returns:
+           Number of edges
+        """
         print(f"The graph as {self.num_edges} number of (unique) edges.")
         return self.num_edges
 
     def print_num_vertices(self) -> int:
-        """ Print (and return) the number of vertices"""
+        """ Print (and return) the number of vertices.
+
+        Returns:
+           Number of vertices 
+        """
         print(f"The graph as {self.num_vertices} number of (unique) edges.")
         return self.num_vertices
 
@@ -153,8 +159,8 @@ class SimpleDirectedGraph():
             indices = grp[HDF5_ADJ_INDICES][:]
             indptr = grp[HDF5_ADJ_INDPTR][:]
 
-            if len(vertices) and isinstance(vertices[0], bytes):
-                # simple decode for strings
-                vertices = [v.decode() for v in vertices]
+        if len(vertices) and isinstance(vertices[0], bytes):
+            # simple decode for strings
+            vertices = [v.decode() for v in vertices]
 
         return cls(vertices, adjacency=(indices, indptr))
