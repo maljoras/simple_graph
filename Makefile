@@ -1,11 +1,5 @@
 .PHONY: mypy pycodestyle pylint pytest
 
-clean-doc:
-	cd docs && make clean
-
-doc:
-	cd docs && make html
-
 mypy:
 	mypy --show-error-codes src/ 
 
