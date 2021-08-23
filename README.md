@@ -40,6 +40,12 @@ sdg2.plot_outdegrees('mygraph.png')
 ```
 ![image](https://user-images.githubusercontent.com/17587387/130370379-ab395ddd-5dbd-4dd5-8c83-5a47f0a61e2e.png)
 
+The example output is eg.:
+```                                                                      
+The graph has 95211 (unique) edges.
+The graph has 1000 (unique) vertices.
+```
+
 # Unit tests 
 ``` make pytest``` results in 
 
