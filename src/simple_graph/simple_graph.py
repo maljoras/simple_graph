@@ -1,10 +1,10 @@
 """ Simple class representing a directed graph"""
 
-import h5py
 from typing import List, Tuple, Union, Optional
-from scipy.sparse import csr_matrix, coo_matrix
+import h5py
 import numpy as np
 from numpy.typing import ArrayLike
+from scipy.sparse import csr_matrix
 import matplotlib.pyplot as plt
 
 
@@ -29,7 +29,6 @@ class SimpleDirectedGraph():
         edges: List of tuples of vertices indicating edges
         adjacency: In case edges is None, adjacency matrix can be
             given as CSR index (numpy array) and index ptr (numpy array) tuple.
-
     Raises:
         ValueError: In case of non unique vertices are given, or both
             or none of edges and adjacency
@@ -63,9 +62,9 @@ class SimpleDirectedGraph():
             num_edges = len(edges)
             rank_in = np.zeros((num_edges), 'int')
             rank_out = np.zeros((num_edges), 'int')
-            for i, (in_vertex, out_vertex) in enumerate(edges): # type: ignore
-                rank_in[i] = vertices_to_rank[in_vertex] # type: ignore
-                rank_out[i] = vertices_to_rank[out_vertex] # type: ignore
+            for i, (in_vertex, out_vertex) in enumerate(edges):  # type: ignore
+                rank_in[i] = vertices_to_rank[in_vertex]  # type: ignore
+                rank_out[i] = vertices_to_rank[out_vertex]  # type: ignore
 
             # use bool to save space and avoid duplication
             self.adjacency = csr_matrix((np.ones((num_edges), 'bool'), (rank_in, rank_out)),
@@ -86,7 +85,7 @@ class SimpleDirectedGraph():
         """ Print (and return) the number of vertices.
 
         Returns:
-           Number of vertices 
+           Number of vertices
         """
         print(f"The graph as {self.num_vertices} number of (unique) edges.")
         return self.num_vertices
@@ -109,6 +108,14 @@ class SimpleDirectedGraph():
             grp.attrs[HDF5_NUM_VERTICES] = self.num_vertices
             grp.attrs[HDF5_NUM_EDGES] = self.num_edges
 
+    def compute_outdegrees(self) -> np.ndarray:
+        """ Computes the out degrees for each vertex.
+
+        Returns:
+            vector of out degrees
+        """
+        return self.adjacency.sum(axis=1)
+
     def plot_outdegrees(self, fname: Optional[str] = None, num_bins: int = 100) -> None:
         """ Plots a histogram of out degrees of the graph and saves it as PNG file.
 
@@ -118,7 +125,7 @@ class SimpleDirectedGraph():
         """
 
         plt.figure()
-        out_degrees = np.sum(self.adjacency, axis=1)
+        out_degrees = self.compute_outdegrees()
         plt.hist(out_degrees, min(num_bins, self.num_vertices))
         plt.xlabel('Out degree')
         plt.ylabel('# count')

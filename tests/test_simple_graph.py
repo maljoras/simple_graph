@@ -36,6 +36,19 @@ class SimpleDirectedGraphTest(TestCase):
         edges = [(1, 2), (2, 2)]
         assert_raises(ValueError, SimpleDirectedGraph, vertices, edges, edges)
 
+    def test_outdegrees(self) -> None:
+        """ Test for computing the out degrees """
+
+        vertices = [1, 2, 3]
+        edges = [(1, 2), (2, 2), (2, 1)]
+
+        sdg = SimpleDirectedGraph(vertices, edges)
+
+        out_degrees = sdg.compute_outdegrees()
+        assert_equal(out_degrees[0], 1)
+        assert_equal(out_degrees[1], 2)
+        assert_equal(out_degrees[2], 0)
+
     def test_graph_construction_edges_string(self) -> None:
         """Test for constructing a graph."""
 
