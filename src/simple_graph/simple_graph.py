@@ -78,7 +78,7 @@ class SimpleDirectedGraph():
         Returns:
            Number of edges
         """
-        print(f"The graph as {self.num_edges} number of (unique) edges.")
+        print(f"The graph has {self.num_edges} (unique) edges.")
         return self.num_edges
 
     def print_num_vertices(self) -> int:
@@ -87,7 +87,7 @@ class SimpleDirectedGraph():
         Returns:
            Number of vertices
         """
-        print(f"The graph as {self.num_vertices} number of (unique) edges.")
+        print(f"The graph has {self.num_vertices} (unique) vertices.")
         return self.num_vertices
 
     def save_to_hdf5(self, hdf5_fname: str, group_name: str) -> None:
