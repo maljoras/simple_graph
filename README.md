@@ -64,6 +64,8 @@ PYTHONPATH=src/ pylint -rn src/ tests/
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 ```
+
+```
 $ make mypy
 mypy --show-error-codes src/ 
 Success: no issues found in 3 source files
