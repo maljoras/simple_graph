@@ -24,7 +24,7 @@ edges = list(zip(from_node, to_node))
 
 # display info
 sdg.print_num_edges()
-sgd.print_num_vertices()
+sdg.print_num_vertices()
 
 # plot out degree
 sdg = SimpleDirectedGraph(vertices, edges)
