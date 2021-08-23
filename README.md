@@ -29,6 +29,10 @@ sdg.plot_outdegrees()
 # export to hdf5
 sdg.save_to_hdf5('my_graph.hd5', 'graph1')
 
+# load from hdf5
+sdg2 = SimpleDirectedGraph.fromhdf5('my_graph.hd5', 'graph1')
+sdg2.plot_outdegrees()
+
 ```
 ![image](https://user-images.githubusercontent.com/17587387/130370379-ab395ddd-5dbd-4dd5-8c83-5a47f0a61e2e.png)
 
