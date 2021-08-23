@@ -36,3 +36,7 @@ sdg2.plot_outdegrees()
 ```
 ![image](https://user-images.githubusercontent.com/17587387/130370379-ab395ddd-5dbd-4dd5-8c83-5a47f0a61e2e.png)
 
+# Unit tests 
+``` make pytest``` results in 
+![image](https://user-images.githubusercontent.com/17587387/130530907-abd03990-ff4f-4691-8332-cafdddd5564d.png)
+
