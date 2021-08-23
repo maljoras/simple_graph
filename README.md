@@ -57,3 +57,17 @@ sdg2 = SimpleDirectedGraph.fromhdf5('my_graph.hd5', 'graph1')
 
 ![image](https://user-images.githubusercontent.com/17587387/130530907-abd03990-ff4f-4691-8332-cafdddd5564d.png)
 
+## Pylint
+```$ make pylint
+PYTHONPATH=src/ pylint -rn src/ tests/ 
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+```$ make mypy
+mypy --show-error-codes src/ 
+Success: no issues found in 3 source files
+```
+
+```$ make pycodestyle
+pycodestyle src/ tests/ 
+```
