@@ -50,7 +50,7 @@ sdg.save_to_hdf5('my_graph.hd5', 'graph1')
 sdg2 = SimpleDirectedGraph.fromhdf5('my_graph.hd5', 'graph1')
 ```
 
-# Unit tests 
+## Unit tests 
 ``` make pytest``` results in 
 
 ![image](https://user-images.githubusercontent.com/17587387/130530907-abd03990-ff4f-4691-8332-cafdddd5564d.png)
