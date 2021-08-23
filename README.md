@@ -33,11 +33,13 @@ sdg.print_num_vertices()
 sdg.plot_outdegrees('mygraph.png')
 
 ```
-![image](https://user-images.githubusercontent.com/17587387/130370379-ab395ddd-5dbd-4dd5-8c83-5a47f0a61e2e.png)
+
+![image](https://user-images.githubusercontent.com/17587387/130532657-2891231d-b39f-41fa-ab2d-76f2d5f212b5.png)
+
 
 The example output is eg.:
 ```                                                                      
-The graph has 95211 (unique) edges.
+The graph has 95148 (unique) edges.
 The graph has 1000 (unique) vertices.
 ```
 ## Export / import from HDF5
