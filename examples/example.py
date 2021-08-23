@@ -14,6 +14,10 @@ edges = list(zip(from_node, to_node))
 sdg = SimpleDirectedGraph(vertices, edges)
 sdg.plot_outdegrees()
 
+# display info
+sdg.print_num_edges()
+sdg.print_num_vertices()
+
 # export to hdf5
 sdg.save_to_hdf5('my_graph.hd5', 'graph1')
 

@@ -116,20 +116,27 @@ class SimpleDirectedGraph():
         """
         return self.adjacency.sum(axis=1)
 
-    def plot_outdegrees(self, fname: Optional[str] = None, num_bins: int = 100) -> None:
+    def plot_outdegrees(self, fname: Optional[str] = None, num_bins: Optional[int] = None) -> None:
         """ Plots a histogram of out degrees of the graph and saves it as PNG file.
 
         Args:
             fname: if give, saves the plot in an PNG file
-            num_bins: number of bins
+            num_bins: number of bins. Estimated automatically if not provided
         """
 
         plt.figure()
         out_degrees = self.compute_outdegrees()
-        plt.hist(out_degrees, min(num_bins, self.num_vertices))
-        plt.xlabel('Out degree')
+
+        bin_range = None
+        if num_bins is None:
+            bin_range = [out_degrees.min(), out_degrees.max()]
+            num_bins = bin_range[1] - bin_range[0]  # type: ignore
+
+        plt.hist(out_degrees, num_bins, range=bin_range)
+        plt.xlabel('Out-degree')
         plt.ylabel('# count')
-        plt.title('Out-degree histogram')
+        plt.title(f'Out-degree histogram of graph \n({self.num_vertices} vertices, '
+                  f'{self.num_edges} edges)')
 
         if fname is None:
             plt.ion()
